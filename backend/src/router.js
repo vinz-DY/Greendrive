@@ -38,7 +38,9 @@ router.get("/cars", carControllers.browse);
 router.get("/cars/:id", carControllers.read);
 
 /* ************************************************************************* */
+const authControllers = require("./controllers/authcontrollers");
 
+router.post("/login", authControllers.log);
 /* ************************************************************************* */
 
 module.exports = router;
