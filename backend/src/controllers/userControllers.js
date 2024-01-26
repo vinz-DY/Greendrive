@@ -45,10 +45,10 @@ const add = async (req, res, next) => {
   try {
     // Insert the user into the database
     const hashPassword = await hash(req.body.password);
-    const userId = await tables.user.create(req.body.mail, hashPassword);
+    await tables.user.create(req.body.mail, hashPassword);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted user
-    res.status(201).json({ userId });
+    res.status(201).json("OK");
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

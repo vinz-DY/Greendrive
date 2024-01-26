@@ -31,7 +31,7 @@ router.get("/user/:id", userControllers.read);
 */
 
 // Route to add a new item
-router.post("/user", validateUser, userControllers.add);
+router.post("/users", validateUser, userControllers.add);
 router.get("/users", userControllers.browse);
 
 /* ************************************************************************* */
@@ -65,7 +65,9 @@ router.get("/cars", carControllers.browse);
 router.get("/cars/:id", carControllers.read);
 
 /* ************************************************************************* */
+// const authControllers = require("./controllers/authControllers");
 
+// router.post("/login", authControllers.log);
 /* ************************************************************************* */
 
 module.exports = router;

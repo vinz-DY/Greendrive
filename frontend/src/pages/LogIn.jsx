@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import LoginInput from "../components/LoginInput";
 
 const user = {
-  email: "",
+  mail: "",
   password: "",
 };
 
@@ -65,11 +65,11 @@ function LogIn() {
           <form onSubmit={handleRequest} className="form-login">
             <div className="contain-input">
               <LoginInput
-                type="email"
-                name="email"
+                type="mail"
+                name="mail"
                 required
                 onChange={handleCredentials}
-                value={credentials.email}
+                value={credentials.mail}
                 placeholder="Votre email"
               />
             </div>

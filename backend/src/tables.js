@@ -15,6 +15,7 @@ const managers = [
   ProfilManager,
   CarManager,
   UserManager,
+
   // Add other managers here
 ];
 
