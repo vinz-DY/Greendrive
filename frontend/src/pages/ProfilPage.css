@@ -1,0 +1,90 @@
+.body {
+  background-image: url("../assets/logo_greendrive.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.containerCR {
+  display: flex;
+  flex: row;
+  margin: 20px;
+}
+
+.carContainer,
+.borneContainer {
+  border: solid black 2px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 30%;
+  padding: 20px;
+  text-align: center;
+}
+
+.carImage,
+.borneImage {
+  width: 40%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.containerProfil {
+  display: flex;
+  margin: 10px;
+  padding: 5rem 1rem;
+}
+
+.profilUpdate {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px; /* Ajustez la largeur maximale selon vos besoins */
+  margin: 1rem 1px; /* Centrez le formulaire horizontalement */
+}
+
+.profilLabel {
+  margin-bottom: 10px;
+}
+
+.profilInput {
+  width: 12vw;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #092d44;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: #d7f3ff;
+}
+
+.profilPicture {
+  margin: 5rem 10rem;
+}
+
+.submitButton {
+  padding: 10px;
+  background-color: #7cdb58;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.5s;
+}
+
+.submitButton:hover {
+  background-color: #29a895;
+}
+
+.upButton {
+  padding: 10px;
+  background: #7cdb58;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.5s;
+}
+
+.upButton:hover {
+  background-color: #29a895;
+}

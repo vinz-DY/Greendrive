@@ -53,9 +53,13 @@ class ProfilManager extends AbstractManager {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing profil
 
-  // async update(profil) {
-  //   ...
-  // }
+  async update(id, profil) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET ? WHERE id = ?`,
+      [profil, id]
+    );
+    return result.insertId;
+  }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an profil by its ID

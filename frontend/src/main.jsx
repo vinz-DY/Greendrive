@@ -13,6 +13,9 @@ import AdminTerminalId from "./pages/AdminTerminalId";
 import Inscription from "./pages/Inscription";
 import InscriptionProfile from "./pages/Inscription_Profile";
 import Admin from "./pages/Admin";
+import ProfilPage from "./pages/profilPage";
+import ProfilCarPage from "./pages/profilCarPage";
+import ProfilReservationPage from "./pages/ProfilReservationPage";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +106,24 @@ const router = createBrowserRouter([
   {
     path: "/inscription-profil",
     element: <InscriptionProfile />,
+  },
+  {
+    path: "/profilPage",
+    element: <ProfilPage />,
+    /* loader: ({ params }) => {
+      return connexion
+        .get(`/profil/${params.id}`)
+        .then((response) => response.data)
+        .catch((err) => console.error(err));
+    }, */
+  },
+  {
+    path: "profilCarPage",
+    element: <ProfilCarPage />,
+  },
+  {
+    path: "profilReservationPage",
+    element: <ProfilReservationPage />,
   },
 ]);
 

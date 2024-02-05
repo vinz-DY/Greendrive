@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class carManager extends AbstractManager {
+class CarManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "car" as configuration
@@ -9,16 +9,16 @@ class carManager extends AbstractManager {
 
   // The C of CRUD - Create operation
 
-  async create(car) {
-    // Execute the SQL INSERT query to add a new car to the "car" table
-    const [result] = await this.database.query(
-      `insert into ${this.table} (title) values (?)`,
-      [car.title]
-    );
+  // async create(car) {
+  //   // Execute the SQL INSERT query to add a new car to the "car" table
+  //   const [result] = await this.database.query(
+  //     `insert into ${this.table} () values (?)`,
+  //     [car.title]
+  //   );
 
-    // Return the ID of the newly inserted car
-    return result.insertId;
-  }
+  //   // Return the ID of the newly inserted car
+  //   return result.insertId;
+  // }
 
   // The Rs of CRUD - Read operations
 
@@ -53,9 +53,13 @@ class carManager extends AbstractManager {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing car
 
-  // async update(car) {
-  //   ...
-  // }
+  async update(id, car) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET ? WHERE id = ?`,
+      [car, id]
+    );
+    return result.insertId;
+  }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an car by its ID
@@ -65,4 +69,4 @@ class carManager extends AbstractManager {
   // }
 }
 
-module.exports = carManager;
+module.exports = CarManager;

@@ -37,6 +37,15 @@ const read = async (req, res, next) => {
 
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
+const edit = async (req, res, next) => {
+  try {
+    await tables.car.update(req.params.id, req.body);
+    res.sendStatus(200);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // The A of BREAD - Add (Create) operation
 // const add = async (req, res, next) => {
@@ -63,7 +72,7 @@ const read = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   // add,
   // destroy,
 };
