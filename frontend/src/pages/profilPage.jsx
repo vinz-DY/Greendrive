@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link /* useParams */ } from "react-router-dom";
-/* import connexion from "../services/connexion"; */
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import connexion from "../services/connexion";
 import CarImage from "../assets/Tesla_Model3.png";
 import BorneImage from "../assets/Marseille_Place_Castellane.jpg";
 import Footer from "../components/Footer";
@@ -8,12 +8,17 @@ import ProfilPicture from "../assets/yavuz.png";
 import "./ProfilPage.css";
 
 function profilPage() {
-  const [profilData, setProfilData] = useState(null);
-  /*
+  const { id } = useParams();
+  const [profilData, setProfilData] = useState({
+    mail: "",
+    password: "",
+    passwordConfirmation: "",
+  });
+
   useEffect(() => {
     const fetchProfilData = async () => {
       try {
-        const response = await connexion.get(`/profil/${id}`);
+        const response = await connexion.get(`/api/users/:id`);
         setProfilData(response.data);
       } catch (error) {
         console.error("Error fetching profil data:", error);
@@ -21,29 +26,25 @@ function profilPage() {
     };
 
     fetchProfilData();
-  });
-  */
+  }, [id]);
 
   const handleInputChange = (e) => {
-    setProfilData({
-      ...profilData,
+    setProfilData((prevData) => ({
+      ...prevData,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  /*
   const handleUpdateProfil = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await connexion.put(`/api/profils/${id}`, profilData);
-
-      console.log(response.data);
+      // eslint-disable-next-line no-unused-vars
+      const response = await connexion.put(`/api/users/${id}`, profilData);
     } catch (error) {
       console.error("Error updating profil:", error);
     }
   };
-  */
 
   return (
     <div>
@@ -74,30 +75,25 @@ function profilPage() {
         </div>
       </div>
       <div className="containerProfil">
-        <form className="profilUpdate">
+        <form className="profilUpdate" onSubmit={handleUpdateProfil}>
           <label className="profilLabel" aria-label="mail">
             <input
               className="profilInput"
               type="email"
               placeholder="Adresse Mail"
+              name="mail"
+              value={profilData.mail}
               onChange={handleInputChange}
             />
-          </label>
-          <label className="profilLabel" aria-label="postalCode">
-            <input
-              className="profilInput"
-              type="text"
-              placeholder="Code Postal"
-            />
-          </label>
-          <label className="profilLabel" aria-label="city">
-            <input className="profilInput" type="text" placeholder="Ville" />
           </label>
           <label className="profilLabel" aria-label="password">
             <input
               className="profilInput"
               type="password"
               placeholder="Mot de passe"
+              name="password"
+              value={profilData.password}
+              onChange={handleInputChange}
             />
           </label>
           <label className="profilLabel" aria-label="passwordConfirmation">
@@ -105,6 +101,9 @@ function profilPage() {
               className="profilInput"
               type="password"
               placeholder="Confirmation du mot de passe"
+              name="passwordConfirmation"
+              value={profilData.passwordConfirmation}
+              onChange={handleInputChange}
             />
           </label>
           <button type="submit" className="submitButton">

@@ -65,7 +65,7 @@ router.get("/terminals/:id", terminalControllers.read);
 /* ***************************Profil********************************************** */
 
 router.get("/profils", checkCredentials, profilControllers.browse);
-router.get("/profils/one", profilControllers.read);
+router.get("/profils/:id", profilControllers.read);
 router.put("/profils/:id", profilControllers.edit);
 
 /* ***************************CAR********************************************** */

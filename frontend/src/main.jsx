@@ -18,7 +18,6 @@ import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
 import ProfilPage from "./pages/profilPage";
 import ProfilCarPage from "./pages/profilCarPage";
-import ProfilReservationPage from "./pages/ProfilReservationPage";
 
 const router = createBrowserRouter([
   {
@@ -124,20 +123,23 @@ const router = createBrowserRouter([
   {
     path: "/profilPage",
     element: <ProfilPage />,
-    /* loader: ({ params }) => {
+  },
+  {
+    path: "/profilPage/:id",
+    element: <ProfilPage />,
+    loader: ({ params }) => {
       return connexion
-        .get(`/profil/${params.id}`)
-        .then((response) => response.data)
-        .catch((err) => console.error(err));
-    }, */
+        .get(`/users/${params.id}`)
+        .then((res) => res.data)
+        .catch((err) => {
+          console.error(err);
+          return null;
+        });
+    },
   },
   {
     path: "profilCarPage",
     element: <ProfilCarPage />,
-  },
-  {
-    path: "profilReservationPage",
-    element: <ProfilReservationPage />,
   },
 ]);
 
