@@ -17,7 +17,8 @@ import FaqPage from "./pages/Faq/FaqPage";
 import AuthProvider from "./context/AuthContext";
 import LogIn from "./pages/LogIn";
 import ProfilPage from "./pages/profilPage";
-import ProfilCarPage from "./pages/profilCarPage";
+
+import UserLayout from "./pages/Layout/UserLayout";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,20 @@ const router = createBrowserRouter([
   {
     path: "/inscription-profil",
     element: <InscriptionProfile />,
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
+  },
+  {
+    path: "/user/",
+    element: <UserLayout />,
+    children: [
+      {
+        path: ":path",
+        element: <ProfilPage />,
+      },
+    ],
   },
   {
     path: "/admin",
@@ -115,31 +130,6 @@ const router = createBrowserRouter([
         },
       },
     ],
-  },
-  {
-    path: "/login",
-    element: <LogIn />,
-  },
-  {
-    path: "/profilPage",
-    element: <ProfilPage />,
-  },
-  {
-    path: "/profilPage/:id",
-    element: <ProfilPage />,
-    loader: ({ params }) => {
-      return connexion
-        .get(`/users/${params.id}`)
-        .then((res) => res.data)
-        .catch((err) => {
-          console.error(err);
-          return null;
-        });
-    },
-  },
-  {
-    path: "profilCarPage",
-    element: <ProfilCarPage />,
   },
 ]);
 

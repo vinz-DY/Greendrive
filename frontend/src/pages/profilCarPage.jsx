@@ -17,7 +17,7 @@ function profilCarPage() {
             <h2>Yavuz Kutuk</h2>
           </div>
           <button type="button" className="upButton">
-            <Link to="/profilPage"> Modifier le profil</Link>
+            <Link to="/user/car"> Modifier le profil</Link>
           </button>
         </div>
         <div className="borneContainer">

@@ -40,7 +40,9 @@ function LogIn() {
             }, 1000);
           } else {
             setMsg("valid");
-            setTimeout(() => {}, 1000);
+            setTimeout(() => {
+              navigate("/user/profil");
+            }, 1000);
           }
         } else if (connectedUser.connected.role === 1) {
           setConnected(connectedUser);

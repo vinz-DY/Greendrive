@@ -4,7 +4,24 @@ import PropTypes from "prop-types";
 export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [connected, setConnected] = useState(false);
+  const [connected, setConnected] = useState({
+    connected: {
+      id: 11,
+      mail: "sam.lake@hotmail.com",
+      role: 0,
+    },
+    profil: {
+      id: 11,
+      lastname: "LAKE",
+      name: "Sam",
+      gender: "male",
+      birthdate: "1972-03-16",
+      postCode: "21000",
+      cityProfil: "Dijon",
+      image: "yavuz.png",
+      user_id: 11,
+    },
+  });
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values

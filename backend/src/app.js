@@ -26,6 +26,7 @@ const app = express();
 // For example: ["http://mysite.com", "http://another-domain.com"]
 
 const cors = require("cors");
+const path = require("path");
 
 app.use(
   cors({
@@ -87,6 +88,10 @@ const router = require("./router");
 
 // Mount the API routes under the "/api" endpoint
 app.use("/api", router);
+
+app.use("/public/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", req.originalUrl));
+});
 
 /* ************************************************************************* */
 
