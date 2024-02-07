@@ -7,6 +7,7 @@ import BorneImage from "../assets/Marseille_Place_Castellane.jpg";
 import Footer from "../components/Footer";
 
 import ProfilForm from "../components/Forms/ProfilForms";
+import CarForm from "../components/Forms/CarForm";
 import "./ProfilPage.css";
 
 function profilPage() {
@@ -64,10 +65,16 @@ function profilPage() {
         </div>
       </div>
       <div className="containerProfil">
-        <ProfilForm
-          mail={connected.connected.mail}
-          image={connected.profil.image}
-        />
+        {path === "profil" && <ProfilForm mail={connected.connected.mail} />}
+        {path === "car" && <CarForm />}
+        <div className="profilPicture">
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}/public/assets/images/${
+              connected.profil.image
+            }`}
+            alt="ProfilPicture"
+          />
+        </div>
       </div>
       <Footer />
     </div>
