@@ -31,10 +31,22 @@ class CarManager extends AbstractManager {
 
   // The Rs of CRUD - Read operations
 
+  // async read(id) {
+  //   // Execute the SQL SELECT query to retrieve a specific car by its ID
+  //   const [rows] = await this.database.query(
+  //     `select * from ${this.table} where id = ?`,
+  //     [id]
+  //   );
+
+  //   // Return the first row of the result, which represents the car
+  //   return rows[0];
+  // }
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific car by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `SELECT car.*, connectic.plugType as connectic_plugType
+      FROM ${this.table} RIGHT JOIN connectic ON car.connectic_id = connectic.id
+      WHERE car.id = ?`,
       [id]
     );
 
